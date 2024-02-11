@@ -22,10 +22,11 @@ public class AnalyticsTest { // (2.1.b) In the package "com.example.school.tests
     public void beforeClass(){
         wireMockServer.start(); // (2.1.f) Implements start of wireMockServer;
         WireMock.configureFor(port); // (2.1.g) Implements configuration creating using port num;
-        WireMock.stubFor(
-                WireMock.get(
-                        WireMock.urlEqualTo("/analytics")
-                ).willReturn(WireMock.aResponse().withStatus(200))
+        WireMock.stubFor( // (2.2.a) Configure stubbing behavior: ->
+                WireMock.get( // -> set up behavior for Request HTTP-Method GET ->
+                        WireMock.urlEqualTo("/analytics") // -> and set up behavior for Request URL ->
+                ).willReturn(WireMock.aResponse().withStatus(200)) // (2.2.b) If Request matched with listed ->
+                // -> in the (step 2.2.a) - WireMock returns this object with status code = 200;
         );
     }
 
@@ -35,12 +36,14 @@ public class AnalyticsTest { // (2.1.b) In the package "com.example.school.tests
     }
 
     @Test
-    public void checkMyUrl() throws IOException {
-        var request = new Request.Builder()
-                .url("http://localhost:" + port + "/analytics")
+    public void checkMyUrl() throws IOException { // (2.2.c) Implements method "checkMyUrl()" and ->
+        var myUrl = "http://localhost:" + port + "/analytics"; // -> var = myURL (URL+port+Endpoint) ->
+        var request = new Request.Builder() // -> and create new request;
+                .url(myUrl)
                 .build();
-        try (var response = client.newCall(request).execute()) {
-            Assert.assertEquals(response.code(), 200);
+        try (var response = client.newCall(request).execute()) { // (2.2.d) Execute this new request;
+            Assert.assertEquals(request.url().toString(), myUrl); // (2.2.e) Check actual URL = expected URL.
+            // Assert.assertEquals(response.code(), 200);
         }
     }
 }

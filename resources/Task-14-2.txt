@@ -1,12 +1,7 @@
-TASK-14
+TASK-14 (Part 2)
 LOGGING AND MOCKING
 
 PARAMETERS:
-- configName =  CONFIG_FILENAME
-- consoleLevel = CONFIG
-- fileLevel = CONFIG
-- fileSize = 39250
-- numFiles = 3
 - httpHeader = authorization: Basic
 - httpResponseCode = 114
 - httpResponseDelay = 3731
@@ -28,6 +23,7 @@ PARAMETERS:
 -----------------------------------------------------------------------------------------------------------------------
 
 (2) МОКІНГ
+Створив новий проект AQA-Lesson_Mocking
 
 (2.0) Створив pom.xml та testng.xml файл:
       - (a) Створив новий pom.xml файл (Maven додався автоматично).
@@ -44,15 +40,19 @@ PARAMETERS:
       - (f) Аннотація @BeforeClass: заімплементував старт wireMockServer;
       - (g) Аннотація @BeforeClass: заімплементував конфігурацію за допомогою сінглтону використовуючи номер порта.
       - (h) Аннотація @AfterClass: заімплементував зупинку wireMockServer;
-      - (i)
-      - (j)
 
 (2.2) Використати метод urlEqualTo() для матчингу URL, що викликається. URL вигадати самостійно.
-      - (a)
-      - (b)
-      - (c)
-      - (d)
-      - (e)
+      - (a) Аннотація @BeforeClass: законфігорував поведінку стаббінгу для реквесту:
+            - HTTP-method = GET;
+            - URL = /analytics (full URI вигадав: http://localhost:9098/analytics).
+      - (b) Аннотація @BeforeClass: законфігорував поведінку стаббінгу для респонсу:
+            наразі матчингу реквеста WireMock поверне об'єкт зі статус-кодом = 200.
+      - (c) Аннотація @Test: створив метод "checkMyUrl()" який створює новий HTTP-реквест з:
+            - URL = http://localhost:
+            - port = 9098
+            - endpoint = /analytics
+      - (d) Аннотація @Test: виконав реквест у блоці TRY;
+      - (e) Аннотація @Test: перевірив, що актуальний URL матчиться із заданним URL.
 
 (2.3) Матчити хедер HTTP реквесту згідно з завданням, поле httpHeader.
       - (a)
