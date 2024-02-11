@@ -31,15 +31,14 @@ PARAMETERS:
       - (c) Змінив структуру проекту додавши діректорії "main" та "test", і переніс існуючи пакети та Main класс до "main".
       - (d) Створив новий testng.xml файл.
 
-(2.1) За прикладом з лекції (HJAQALesson23) створити тестовий клас, що використовує мок-сервіс за допомогою WireMock.
-      - (a) У діректорії src/test/java зробив новий пакет "com.example.school.tests"
-      - (b) У пакеті "com.example.school.tests" зробив тестовий клас "AnalyticsTest"
-      - (c) Тестовий клас "AnalyticsTest": заімплементував новий OkHttpClient
-      - (d) Тестовий клас "AnalyticsTest": заімплементував новий WireMockServer
-      - (e) Тестовий клас "AnalyticsTest": створив @BeforeClass та @AfterClass анотації.
-      - (f) Аннотація @BeforeClass: заімплементував старт wireMockServer;
-      - (g) Аннотація @BeforeClass: заімплементував конфігурацію за допомогою сінглтону використовуючи номер порта.
-      - (h) Аннотація @AfterClass: заімплементував зупинку wireMockServer;
+(2.1) За прикладом з лекції (HJAQALesson23) створив тестовий клас, що використовує мок-сервіс за допомогою WireMock.
+      - (a) Створив тестовий клас "AnalyticsTest"
+      - (b) Тестовий клас "AnalyticsTest": заімплементував новий OkHttpClient
+      - (c) Тестовий клас "AnalyticsTest": заімплементував новий WireMockServer
+      - (d) Тестовий клас "AnalyticsTest": створив @BeforeClass та @AfterClass анотації.
+      - (e) Аннотація @BeforeClass: заімплементував старт wireMockServer;
+      - (f) Аннотація @BeforeClass: заімплементував конфігурацію за допомогою сінглтону використовуючи номер порта.
+      - (g) Аннотація @AfterClass: заімплементував зупинку wireMockServer;
 
 (2.2) Використати метод urlEqualTo() для матчингу URL, що викликається. URL вигадати самостійно.
       - (a) Аннотація @BeforeClass: законфігорував поведінку стаббінгу для реквесту:
@@ -47,7 +46,7 @@ PARAMETERS:
             - URL = /analytics (full URI вигадав: http://localhost:9098/analytics).
       - (b) Аннотація @BeforeClass: законфігорував поведінку стаббінгу для респонсу:
             наразі матчингу реквеста WireMock поверне об'єкт зі статус-кодом = 200.
-      - (c) Аннотація @Test: створив метод "checkMyUrl()" який створює новий HTTP-реквест з:
+      - (c) Аннотація @Test: заімплементував метод "checkMyUrl()" який створює новий HTTP-реквест з:
             - URL = http://localhost:
             - port = 9098
             - endpoint = /analytics
