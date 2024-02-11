@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> <!-- (step 2.0.d) Create new testng.xml file -->
+<suite name="MySchoolTestSuite">
+    <test name="MySchoolTest">
+        <classes>
+            <class name="AnalyticsTest"/>
+        </classes>
+    </test>
+</suite>

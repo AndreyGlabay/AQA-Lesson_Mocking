@@ -1,0 +1,77 @@
+TASK-14
+LOGGING AND MOCKING
+
+PARAMETERS:
+- configName =  CONFIG_FILENAME
+- consoleLevel = CONFIG
+- fileLevel = CONFIG
+- fileSize = 39250
+- numFiles = 3
+- httpHeader = authorization: Basic
+- httpResponseCode = 114
+- httpResponseDelay = 3731
+
+
+(2) Мокінг
+
+(2.1) За прикладом з лекції (HJAQALesson23) створити тестовий клас, що використовує мок-сервіс за допомогою WireMock.
+
+(2.2) Використати метод urlEqualTo() для матчингу URL, що викликається. URL вигадати самостійно.
+
+(2.3) Матчити хедер HTTP реквесту згідно з завданням, поле httpHeader.
+
+(2.4) Повертати HTTP код та робити затримку відповіді згідно з завданням: поля httpResponseCode та httpResponseDelay,
+      відповідньо.
+
+(2.5) Асертити код респонса та довжину затримки.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+(2) МОКІНГ
+
+(2.0) Створив pom.xml та testng.xml файл:
+      - (a) Створив новий pom.xml файл (Maven додався автоматично).
+      - (b) Наповнив pom.xml контентом, додав залежностей: OkHTTP, TestNG, wiremock.
+      - (c) Змінив структуру проекту додавши діректорії "main" та "test", і переніс існуючи пакети та Main класс до "main".
+      - (d) Створив новий testng.xml файл.
+
+(2.1) За прикладом з лекції (HJAQALesson23) створити тестовий клас, що використовує мок-сервіс за допомогою WireMock.
+      - (a) У діректорії src/test/java зробив новий пакет "com.example.school.tests"
+      - (b) У пакеті "com.example.school.tests" зробив тестовий клас "AnalyticsTest"
+      - (c) Тестовий клас "AnalyticsTest": заімплементував новий OkHttpClient
+      - (d) Тестовий клас "AnalyticsTest": заімплементував новий WireMockServer
+      - (e) Тестовий клас "AnalyticsTest": створив @BeforeClass та @AfterClass анотації.
+      - (f) Аннотація @BeforeClass: заімплементував старт wireMockServer;
+      - (g) Аннотація @BeforeClass: заімплементував конфігурацію за допомогою сінглтону використовуючи номер порта.
+      - (h) Аннотація @AfterClass: заімплементував зупинку wireMockServer;
+      - (i)
+      - (j)
+
+(2.2) Використати метод urlEqualTo() для матчингу URL, що викликається. URL вигадати самостійно.
+      - (a)
+      - (b)
+      - (c)
+      - (d)
+      - (e)
+
+(2.3) Матчити хедер HTTP реквесту згідно з завданням, поле httpHeader.
+      - (a)
+      - (b)
+      - (c)
+      - (d)
+      - (e)
+
+(2.4) Повертати HTTP код та робити затримку відповіді згідно з завданням: поля httpResponseCode та httpResponseDelay,
+      відповідньо.
+      - (a)
+      - (b)
+      - (c)
+      - (d)
+      - (e)
+
+(2.5) Асертити код респонса та довжину затримки.
+      - (a)
+      - (b)
+      - (c)
+      - (d)
+      - (e)
