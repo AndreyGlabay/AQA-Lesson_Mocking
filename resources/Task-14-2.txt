@@ -53,15 +53,13 @@ PARAMETERS:
       - (d) Аннотація @Test: виконав реквест у блоці TRY;
       - (e) Аннотація @Test: перевірив, що актуальний URL матчиться із заданним URL.
 
-(2.3) Матчити хедер HTTP реквесту згідно з завданням, поле httpHeader.
-      - (a)
-      - (b)
-      - (c)
-      - (d)
-      - (e)
+(2.3) Матчити хедер HTTP реквесту згідно з завданням, поле httpHeader = authorization: Basic
+      - (a) Аннотація @BeforeClass: Встановив HTTP хедер реквесту;
+      - (b) Аннотація @Test: перевірив, що актуальний Header матчиться із заданним Header'ом.
 
-(2.4) Повертати HTTP код та робити затримку відповіді згідно з завданням: поля httpResponseCode та httpResponseDelay,
-      відповідньо.
+(2.4) Повертати HTTP код та робити затримку відповіді згідно з завданням:
+      * httpResponseCode = 114 -> suggested to use 2xx -> httpResponseCode = 214
+      * httpResponseDelay = 3731
       - (a)
       - (b)
       - (c)
