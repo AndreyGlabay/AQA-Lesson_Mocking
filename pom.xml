@@ -15,29 +15,22 @@
     </properties>
 
     <dependencies>
-        <!-- (step 2.0.b) Add dependency from OkHTTP, using Maven Repo -->
-        <dependency>
+        <dependency> <!-- (step 2.0.b) Add dependency from OkHTTP, using Maven Repo -->
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.12.0</version>
         </dependency>
-
-        <!-- (step 2.0.b) Add dependency from TestNG, using Maven Repo -->
-        <dependency>
+        <dependency> <!-- (step 2.0.b) Add dependency from TestNG, using Maven Repo -->
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- (step 2.0.b) Add dependency from wiremock, using Maven Repo -->
-        <dependency>
+        <dependency> <!-- (step 2.0.b) Add dependency from wiremock, using Maven Repo -->
             <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>3.3.1</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
 </project>

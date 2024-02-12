@@ -3,8 +3,6 @@
     <test name="MySchoolTest">
         <classes>
             <class name="AnalyticsTest"/>
-
         </classes>
-
     </test>
 </suite>

@@ -17,8 +17,8 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
     OkHttpClient client = new OkHttpClient.Builder().build(); // (2.1.b) Implements new OkHttpClient;
     WireMockServer wireMockServer
             = new WireMockServer(new WireMockConfiguration().port(9098)); // (2.1.c) Add new WireMockServer;
-    int code = 214; // (2.4.a) Implements var for httpResponseCode;
-    int delay = 3731; // (2.4.a) Implements var for httpResponseDelay;
+    int code = 214;     // (2.4.a) Implements var for httpResponseCode;
+    int delay = 3731;   // (2.4.a) Implements var for httpResponseDelay;
 
     @BeforeClass // (2.1.d) Implements @BeforeClass annotation
     public void beforeClass(){
@@ -30,12 +30,7 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
                                 .withHeader("authorization", "Basic") //(2.3.a) Set the Header for response;
                                 .withStatus(code) // (2.4.b) Set the Status Code for response;
                                 .withFixedDelay(delay) // (2.4.c) Set the Fixed Delay for response;
-
-
                         )
-
-
-
         );
     }
 
@@ -45,9 +40,9 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
     }
 
     @Test
-    public void checkMyResponse() throws IOException { // (2.2.c) Implements method "checkMyUrl()" and ->
-        var myUrl = "http://localhost:" + port + "/analytics"; // -> var = myURL (URL+port+Endpoint) ->
-        var request = new Request.Builder() // -> and create new request;
+    public void checkMyResponse() throws IOException {          // (2.2.c) Implements method "checkMyUrl()" and ->
+        var myUrl = "http://localhost:" + port + "/analytics";  //          -> var = myURL (URL+port+Endpoint) ->
+        var request = new Request.Builder()                     //          -> and create new request;
                 .url(myUrl)
                 .build();
         Instant beforeRequest = Instant.now(); // (2.5.b) Measure time moment before Request execution;
