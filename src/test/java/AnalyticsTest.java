@@ -9,19 +9,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 
 public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests" create new test class "AnalyticsTest";
     int port = 9098; // (2.1.f) Implements var "port" and initiate it;
     OkHttpClient client = new OkHttpClient.Builder().build(); // (2.1.b) Implements new OkHttpClient;
     WireMockServer wireMockServer
             = new WireMockServer(new WireMockConfiguration().port(9098)); // (2.1.c) Add new WireMockServer;
-
-    int delay = 3731;
-    int code = 214;
-
-
-
-
+    int code = 214; // (2.4.a) Implements var for httpResponseCode;
+    int delay = 3731; // (2.4.a) Implements var for httpResponseDelay;
 
     @BeforeClass // (2.1.d) Implements @BeforeClass annotation
     public void beforeClass(){
@@ -30,9 +27,9 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
         WireMock.stubFor( // (2.2.a) Configure stubbing behavior for Request with ->
                 WireMock.get(WireMock.urlEqualTo("/analytics")) // -> with Request HTTP-Method GET;
                         .willReturn(WireMock.aResponse() // (2.2.b) If req matched with URL - WireMock returns:
-                                .withHeader("authorization", "Basic") // (2.3.a) Set the Header for resp.
-                                .withStatus(code) //  status code = 200;
-                                .withFixedDelay(delay)
+                                .withHeader("authorization", "Basic") //(2.3.a) Set the Header for response;
+                                .withStatus(code) // (2.4.b) Set the Status Code for response;
+                                .withFixedDelay(delay) // (2.4.c) Set the Fixed Delay for response;
 
 
                         )
@@ -53,10 +50,14 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
         var request = new Request.Builder() // -> and create new request;
                 .url(myUrl)
                 .build();
+        Instant beforeRequest = Instant.now(); // (2.5.b) Measure time moment before Request execution;
         try (var response = client.newCall(request).execute()) { // (2.2.d) Execute this new request;
+            Instant afterRequest = Instant.now(); // (2.5.c) Measure time moment after Request execution;
+            int actualDelay = (int) Duration.between(beforeRequest, afterRequest).toMillis(); // (2.5.d) Get difference;
             Assert.assertEquals(request.url().toString(), myUrl); // (2.2.e) Check actual URL = expected URL.
             Assert.assertEquals("Basic", response.header("authorization")); // (2.3.b) Check Header matching;
-            // Assert.assertEquals(response.code(), 200);
+            Assert.assertEquals(response.code(), code); // (2.5.a) Check Status Code matching;
+            Assert.assertTrue(actualDelay >= delay); // (2.5.e) Check Delay is equal or greater than expected;
         }
     }
 }
