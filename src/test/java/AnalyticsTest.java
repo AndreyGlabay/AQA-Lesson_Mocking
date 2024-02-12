@@ -56,3 +56,4 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
         }
     }
 }
+// (step 3.2) This comment is tech changes in the code for get a difference for PR creation.
