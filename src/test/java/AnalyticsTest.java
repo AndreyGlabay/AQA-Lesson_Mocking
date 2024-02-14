@@ -55,7 +55,7 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
 
     @Test (testName = "TestCase2: Check Request's Delay")
     public void checkMyResponseDelay() throws IOException {     // (4.1) Implements this annotation to divide one @Test ->
-        var myUrl = "http://localhost:" + port + "/analytics";  //       -> by two. In this one remain check for
+        var myUrl = "http://localhost:" + port + "/analytics";  //       -> On two. In this one: remain check for
         var request = new Request.Builder()                     //          -> Fixed Delay.
                 .url(myUrl)
                 .build();
