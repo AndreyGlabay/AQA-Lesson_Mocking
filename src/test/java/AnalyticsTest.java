@@ -39,19 +39,30 @@ public class AnalyticsTest { // (2.1.a) In the package "com.example.school.tests
         wireMockServer.stop(); // (2.1.g) Implements stop of wireMockServer;
     }
 
-    @Test
+    @Test (testName = "TestCase1: Check Request Code + URL + Header")
     public void checkMyResponse() throws IOException {          // (2.2.c) Implements method "checkMyUrl()" and ->
         var myUrl = "http://localhost:" + port + "/analytics";  //          -> var = myURL (URL+port+Endpoint) ->
         var request = new Request.Builder()                     //          -> and create new request;
                 .url(myUrl)
                 .build();
-        Instant beforeRequest = Instant.now(); // (2.5.b) Measure time moment before Request execution;
+
+        try (var response = client.newCall(request).execute()) { // (2.2.d) Execute this new request;
+            Assert.assertEquals(response.code(), code); // (2.5.a) Check Status Code matching;
+            Assert.assertEquals(request.url().toString(), myUrl); // (2.2.e) Check actual URL = expected URL.
+            Assert.assertEquals("Basic", response.header("authorization")); // (2.3.b) Check Header matching;
+        }
+    }
+
+    @Test (testName = "TestCase2: Check Request's Delay")
+    public void checkMyResponseDelay() throws IOException {     // (4.1) Implements this annotation to divide one @Test ->
+        var myUrl = "http://localhost:" + port + "/analytics";  //       -> by two. In this one remain check for
+        var request = new Request.Builder()                     //          -> Fixed Delay.
+                .url(myUrl)
+                .build();
+       Instant beforeRequest = Instant.now(); // (2.5.b) Measure time moment before Request execution;
         try (var response = client.newCall(request).execute()) { // (2.2.d) Execute this new request;
             Instant afterRequest = Instant.now(); // (2.5.c) Measure time moment after Request execution;
             int actualDelay = (int) Duration.between(beforeRequest, afterRequest).toMillis(); // (2.5.d) Get difference;
-            Assert.assertEquals(request.url().toString(), myUrl); // (2.2.e) Check actual URL = expected URL.
-            Assert.assertEquals("Basic", response.header("authorization")); // (2.3.b) Check Header matching;
-            Assert.assertEquals(response.code(), code); // (2.5.a) Check Status Code matching;
             Assert.assertTrue(actualDelay >= delay); // (2.5.e) Check Delay is equal or greater than expected;
         }
     }
